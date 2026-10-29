@@ -1,0 +1,45 @@
+$ The interactive layer, tested with a real terminal (a pty driven by
+$ fish-lab's Python driver; the raw byte streams are kept beside this
+$ file as t09-pty-demo.raw.txt and t09-pty-prime.raw.txt).
+$
+$ Method: an interactive fish was started on a pseudo-terminal. In a
+$ first session the command
+$
+$     echo the eagle has landed
+$
+$ was run, so it exists in the shell's history. In a second session,
+$ the first keystrokes of the same command were typed, then the
+$ abbreviation defined in config.fish, and the raw output stream was
+$ searched for what the terminal was told to draw.
+$
+$ Finding 1 - autosuggestions. While only "echo the e" had been typed,
+$ the stream already contains the whole line:
+$
+$     echo the eagle has landed
+$
+$ That full text is the suggestion, drawn after the typed prefix in
+$ the autosuggestion colour ($fish_color_autosuggestion is brblack,
+$ a dim grey, in this configuration).
+$
+$ Finding 2 - abbreviation expansion. The keystrokes "gst " (with the
+$ trailing space that triggers expansion) were sent. The stream
+$ contains, in order: the typed "gst", cursor movements back, and
+$ then the replacement text drawn in its place:
+$
+$     git status
+$
+$ The abbreviation from config.fish (t08) expanded on the space,
+$ exactly as it does for a person typing.
+$
+$ Finding 3 - syntax highlighting. The recorded streams contain the
+$ colour codes fish paints with: a valid command name is preceded
+$ by code 34 (blue) in the stream, and the error colour code (91,
+$ bright red) appears throughout the section where a nonexistent
+$ command was typed. The configured colours, for reference:
+$
+$     fish -c 'echo $fish_color_command $fish_color_error $fish_color_autosuggestion'
+$     blue brred brblack
+$
+$ What this does not show: how any of it looks to an eye. The lab
+$ has a byte stream, not a screen; the claims above are about what
+$ fish sent to the terminal, which the raw files preserve.

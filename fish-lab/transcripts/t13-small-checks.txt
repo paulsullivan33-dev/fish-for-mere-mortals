@@ -1,0 +1,23 @@
+$ fish --private: a session that leaves no history behind
+private mode: 1
+
+$ an unknown command, and the status it leaves
+fish: Unknown command: definitely_not_a_command_xyz
+fish: 
+definitely_not_a_command_xyz; echo "status was $status"
+^~~~~~~~~~~~~~~~~~~~~~~~~~~^
+status was 127
+
+$ the shell version is a variable too
+3.7.0
+
+$ fish -c 'export EDITOR=vim; echo "EDITOR is $EDITOR"'
+EDITOR is vim
+$ fish -c 'type export' | head -3
+export is a function with definition
+# Defined in /usr/share/fish/functions/export.fish @ line 1
+function export --description 'Set env variable. Alias for `set -gx` for bash compatibility.'
+$ (So the bash spelling export NAME=value works in fish —
+$  translated by a shipped function — while a bare NAME=value
+$  at top level remains a parse-time error, t10. Used in the
+$  Limits chapter.)

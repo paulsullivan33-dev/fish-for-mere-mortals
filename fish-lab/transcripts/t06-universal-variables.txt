@@ -1,0 +1,23 @@
+$ first fish process: set a universal variable, then exit
+set and leaving
+
+$ second, separate fish process: the variable is still there
+teal
+$favourite_colour: set in universal scope, unexported, with 1 elements
+$favourite_colour[1]: |teal|
+
+$ where it lives: ~/.config/fish/fish_variables
+SETUVAR favourite_colour:teal
+
+$ fish_add_path stores its list the same way, in $fish_user_paths
+/home/hatch/workspace/fish-lab-work/bin
+/home/hatch/workspace/fish-lab-work/bin /home/hatch/workspace/fish-tool/root/usr/bin /opt/hatch/bin
+
+$ two shells at once: A sets the variable, sleeps; B, started after A,
+$ changes it underneath A; A reads it again when it wakes
+B changed it
+A now sees: after
+
+$ erasing is also just set: a third process removes it for everyone
+erased
+query exit: 1 (1 means gone)

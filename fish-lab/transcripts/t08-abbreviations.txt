@@ -1,0 +1,22 @@
+$ an abbreviation: a short word that expands as you type it
+abbr -a -- gst 'git status'
+
+$ a surprise the lab verified twice: a new fish process does NOT
+$ know gst. Since fish 3.6, abbreviations are not saved anywhere
+$ by themselves — the documentation says so, in so many words
+query exit: 1 (1 means not defined)
+
+$ the intended home for them is config.fish: the abbr --add line
+$ itself, run at every startup
+abbr -a -- gst 'git status'
+
+$ now every new process defines it at startup
+abbr -a -- gst 'git status'
+
+$ an abbreviation can also expand to whatever a function prints
+abbr -a -- gst 'git status'
+abbr -a --function today_text -- today
+
+$ and erasing is per-session unless the config line goes too
+(this session has forgotten gst)
+(and now every session has)

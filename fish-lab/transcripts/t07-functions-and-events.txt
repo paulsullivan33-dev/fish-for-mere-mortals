@@ -1,0 +1,27 @@
+$ a function is defined with function ... end; here, one that
+$ reports the sizes of the files it is given
+4.0K	/home/hatch/workspace/fish-for-mere-mortals/fish-lab/scripts/greet
+stdin
+
+$ funcsave writes the function to a file of its own:
+$ ~/.config/fish/functions/sizes.fish — one function per file
+funcsave: wrote /home/hatch/workspace/fish-lab-work/home/.config/fish/functions/sizes.fish
+function sizes
+    for f in $argv
+        du -h $f
+    end
+end
+
+$ a brand-new fish process knows the function without being told:
+$ it is loaded on demand (autoloaded) from that file at first use
+20K	/home/hatch/workspace/fish-for-mere-mortals/LICENSE
+/home/hatch/workspace/fish-lab-work/home/.config/fish/functions/sizes.fish
+
+$ events: a function can run when something happens. Here, a custom
+$ event is emitted, and the handler answers
+the doorbell rang (event arguments: front-door)
+the doorbell rang (event arguments: back-door)
+
+$ a saved function is removed by deleting its file; the next
+$ process no longer finds it
+type: Could not find 'sizes'

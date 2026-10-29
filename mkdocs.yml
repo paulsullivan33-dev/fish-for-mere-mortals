@@ -1,0 +1,27 @@
+site_name: Fish for Mere Mortals
+site_description: The friendly interactive shell, explained in plain language. Autosuggestions, syntax highlighting and completions with descriptions arrive before you ask, the scripting language is its own and says so, variables remember themselves between sessions, and the limits are stated plainly.
+site_url: https://paulsullivan33-dev.github.io/fish-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Fish Is: what-fish-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Fish: installing-fish.md
+  - Your First Session: your-first-session.md
+  - Syntax, Not Bash: syntax-not-bash.md
+  - Completions That Write Themselves: completions.md
+  - Variables That Persist: variables-that-persist.md
+  - Functions, Events and Abbreviations: functions-events-and-abbreviations.md
+  - Scripting in Fish: scripting-in-fish.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

@@ -1,0 +1,21 @@
+$ The prompt is a function like any other, and the web tool's
+$ sample prompts are ready-made versions of it. The lab copied
+$ one into place and started an interactive session on a pty
+$ (the same driver as t09):
+$
+$     cp /usr/share/fish/tools/web_config/sample_prompts/arrow.fish \
+$         ~/.config/fish/functions/fish_prompt.fish
+$
+$ Default prompt in the earlier sessions:
+$
+$     root@htch-runtime /h/hatch#
+$
+$ Prompt with the sample in place (escape codes stripped):
+$
+$     #  hatch   /h/hatch
+$
+$ A different shape entirely — the sample replaced the prompt.
+$ Deleting the file again brought the default prompt back at the
+$ next session, which the lab confirmed by removing it and
+$ re-running the t09 driver. No other state is involved: a prompt
+$ is one function, in one file, loaded on demand.

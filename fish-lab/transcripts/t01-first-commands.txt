@@ -1,0 +1,26 @@
+$ fish -c 'echo Hello, world'
+Hello, world
+
+$ fish -c 'echo The current directory is (pwd)'
+The current directory is /home/hatch
+
+$ fish -c 'math 6 \* 7'
+42
+
+$ fish -c 'string upper "loud and clear"'
+LOUD AND CLEAR
+
+$ fish -c 'set greeting "Good morning"; echo $greeting'
+Good morning
+
+$ fish -c 'set colours red green blue; echo $colours[1]; echo $colours[-1]; count $colours'
+red
+blue
+3
+
+$ fish -c 'echo (seq 3)'
+1 2 3
+
+$ fish -c 'date +%Y'
+2026
+

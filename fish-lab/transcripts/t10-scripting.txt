@@ -1,0 +1,57 @@
+$ the script (fish-lab/scripts/wordcount.fish):
+#!/usr/bin/env fish
+# wordcount.fish - count the words in each file it is named.
+# A small but complete fish script: argument parsing, a loop,
+# arithmetic with math, and honest exit statuses.
+
+argparse h/help 's/short' -- $argv
+or exit 2
+
+if set -q _flag_help
+    echo "Usage: wordcount.fish [--short] FILE..."
+    echo "Print the word count of each FILE."
+    exit 0
+end
+
+if test (count $argv) -eq 0
+    echo "wordcount.fish: no files named" >&2
+    exit 2
+end
+
+set -l total 0
+for file in $argv
+    if not test -f $file
+        echo "wordcount.fish: $file is not a file" >&2
+        exit 1
+    end
+    set -l words (wc -w < $file | string trim)
+    set total (math $total + $words)
+    if not set -q _flag_short
+        echo "$file: $words words"
+    end
+end
+
+echo "total: $total words"
+
+$ run directly, by its shebang line (#!/usr/bin/env fish):
+/home/hatch/workspace/fish-lab-work/sample.txt: 9 words
+total: 9 words
+(exit 0)
+
+$ --help and the error paths behave like a grown-up tool:
+Usage: wordcount.fish [--short] FILE...
+Print the word count of each FILE.
+wordcount.fish: no files named
+(exit 2)
+wordcount.fish: /no/such/file is not a file
+(exit 1)
+
+$ inside a script, status tells you where you are:
+probe
+Standard input
+
+$ and the classic first accident: a bash-style assignment is a
+$ parse error here — with the correction spelled out in the message
+fish: Unsupported use of '='. In fish, please use 'set NAME value'.
+NAME=value
+^~~~~~~~~^

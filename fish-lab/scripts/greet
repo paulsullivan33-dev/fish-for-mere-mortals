@@ -1,0 +1,22 @@
+#!/usr/bin/env fish
+# greet - a tiny demonstration program used by the completions chapter.
+# It exists so fish has a real command to load completions for.
+
+argparse h/help 'n/name=' loud -- $argv
+or exit 2
+
+if set -q _flag_help
+    echo "Usage: greet [--name NAME] [--loud]"
+    exit 0
+end
+
+set -l who world
+if set -q _flag_name
+    set who $_flag_name
+end
+
+if set -q _flag_loud
+    string upper "Hello, $who!"
+else
+    echo "Hello, $who!"
+end

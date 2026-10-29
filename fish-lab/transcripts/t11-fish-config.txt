@@ -1,0 +1,39 @@
+$ fish_config is a function shipped with fish; its job is to start
+$ the web configuration tool:
+
+$     fish -c 'type fish_config'
+$     fish_config is a function with definition
+$     # Defined in /usr/share/fish/functions/fish_config.fish @ line 1
+$     function fish_config --description Launch\ fish\'s\ web\ based\ configuration
+
+$ Starting it (with a terminal type set, and a stand-in program in
+$ place of a browser, because the lab has neither a display nor a
+$ browser installed):
+
+$     Web config started at file:///tmp/web_configXXXXXX.html
+$     If that doesn't work, try opening http://localhost:8000/<a long random token>/
+$     Hit ENTER to stop.
+
+$ The token in the address is the lock on the door: the server only
+$ answers requests that carry it. While it ran, the lab asked the
+$ address for its page:
+
+$     HTTP 200, 2043 bytes
+$     <title>fish shell configuration
+
+$ The two honest limits of this test, stated plainly:
+$ - Without a TERM setting, the tool's Python helper stops earlier,
+$   on a missing terminfo database ("setupterm: could not find
+$   terminfo database") — a property of this stripped-down lab
+$   machine, not of a normal desktop install.
+$ - The lab fetched the page but did not click through the
+$   interface; choosing colours and prompts in the browser is
+$   described in the chapter from the project's documentation,
+$   not from a lab run.
+
+$ The prompt samples the web tool offers live beside it, as files:
+
+$     ls /usr/share/fish/tools/web_config/sample_prompts
+$     acidhub.fish  arrow.fish  astronaut.fish  default.fish
+$     disco.fish  informative.fish  informative_vcs.fish
+$     minimalist.fish  (and more)

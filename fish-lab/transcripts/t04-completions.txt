@@ -1,0 +1,38 @@
+$ fish -c "echo \$fish_complete_path" — where completions are loaded from
+/home/hatch/workspace/fish-lab-work/home/.config/fish/completions /etc/fish/completions /home/hatch/workspace/fish-lab-work/home/.local/share/fish/vendor_completions.d /usr/share/fish/vendor_completions.d /usr/share/fish/completions /home/hatch/workspace/fish-lab-work/home/.local/share/fish/generated_completions
+
+$ how many completion files ship with fish
+959
+
+$ complete --do-complete='git ch' — what Tab would offer after: git ch
+checkout	Checkout and switch to a branch
+cherry	Find commits yet to be applied to upstream
+cherry-pick	Reapply a commit on another branch
+
+$ the greet program itself (fish-lab/scripts/greet), on the PATH
+Hello, Ada!
+HELLO, ADA!
+
+$ a hand-written completion file: ~/.config/fish/completions/greet.fish
+complete -c greet -s h -l help -d "Show help"
+complete -c greet -s n -l name -r -d "Who to greet"
+complete -c greet -l loud -d "Shout the greeting"
+
+$ complete --do-complete='greet --' — the new completions answer
+--help	Show help
+--loud	Shout the greeting
+--name	Who to greet
+
+$ every completion registered for greet, listed back in canonical form
+$ (a completion attempt in the same process loads the file first)
+complete greet -l loud -d 'Shout the greeting'
+complete --require-parameter greet -l name -d 'Who to greet'
+complete --require-parameter greet -s n -d 'Who to greet'
+complete greet -l help -d 'Show help'
+complete greet -s h -d 'Show help'
+
+$ the fine print, found in the lab: with no greet program on the PATH,
+$ the same two commands answer nothing at all — fish loads a command's
+$ completion file on demand, the first time that command is completed,
+$ and a command that does not exist is never completed.
+(that was the same command with PATH reduced to /usr/bin /bin: no output)

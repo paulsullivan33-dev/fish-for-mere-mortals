@@ -1,0 +1,30 @@
+$ fish --version
+fish, version 3.7.0
+
+$ fish_indent --version
+fish_indent, version 3.7.0
+
+$ fish_key_reader --version
+fish_key_reader, version 3.7.0
+
+$ fish -c "echo \$__fish_data_dir"
+/usr/share/fish
+
+$ shipped completions, functions and builtins
+959 completions
+217 functions
+61 builtins
+
+$ ls /usr/share/fish/tools/web_config (the fish_config web tool)
+delete.png
+favicon.png
+fishconfig.css
+fishconfig_print.css
+index.html
+jquery.js
+js
+partials
+
+$ the Debian/Ubuntu package registers fish in /etc/shells (its postinst script):
+
+    add-shell /usr/bin/fish

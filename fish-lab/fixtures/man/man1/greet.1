@@ -1,0 +1,25 @@
+.TH GREET 1 "2026-10-29" "fish lab" "User Commands"
+.SH NAME
+greet \- print a greeting
+.SH SYNOPSIS
+.B greet
+[\fB\-\-name\fR \fINAME\fR]
+[\fB\-\-loud\fR]
+[\fB\-\-help\fR]
+.SH DESCRIPTION
+.B greet
+prints a short greeting to standard output.
+It is a demonstration program written for a shell guide's lab
+and does nothing else of consequence.
+.SH OPTIONS
+.TP
+\fB\-n\fR, \fB\-\-name\fR \fINAME\fR
+Who to greet. The default is the whole world.
+.TP
+.B \-\-loud
+Shout the greeting in capital letters.
+.TP
+.B \-h, \-\-help
+Show a short help text and exit.
+.SH EXAMPLES
+greet \-\-name Ada \-\-loud

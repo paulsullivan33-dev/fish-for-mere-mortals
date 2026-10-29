@@ -1,0 +1,56 @@
+--- Variables are lists; indexing is 1-based and can count from the end
+$ fish -c 'set fruit apple pear plum; echo first=$fruit[1] last=$fruit[-1]; echo middle=$fruit[2..3]'
+first=apple last=plum
+middle=pear middle=plum
+(exit 0)
+
+--- No word splitting: a variable with spaces stays one argument
+$ fish -c 'set phrase "two words"; count $phrase; printf "%s\n" $phrase'
+1
+two words
+(exit 0)
+
+--- Command substitution: parentheses (the dollar form works too)
+$ fish -c 'echo today is (date +%A); echo today is $(date +%A)'
+today is Thursday
+today is Thursday
+(exit 0)
+
+--- Substitution splits its output into a list, one element per line
+$ fish -c 'set lines (printf "one\ntwo\nthree\n"); count $lines; echo $lines[2]'
+3
+two
+(exit 0)
+
+--- if / for / while end with end, not fi / done
+$ fish -c 'for n in 1 2 3; if test $n -eq 2; echo "two found"; end; end'
+two found
+(exit 0)
+
+$ fish -c 'set i 0; while test $i -lt 3; set i (math $i + 1); end; echo i is $i'
+i is 3
+(exit 0)
+
+--- and / or / not instead of && and ||
+$ fish -c 'true; and echo yes-branch; false; or echo no-branch'
+yes-branch
+no-branch
+(exit 0)
+
+--- The exit status of the last command is $status
+$ fish -c 'false; echo status=$status; true; echo status=$status'
+status=1
+status=0
+(exit 0)
+
+--- set --show reports a variable's scope and value
+$ fish -c 'set shoe_size 10; set --show shoe_size'
+$shoe_size: set in global scope, unexported, with 1 elements
+$shoe_size[1]: |10|
+(exit 0)
+
+--- An undefined variable is simply empty, not an error
+$ fish -c 'echo "[$never_set_anywhere]"'
+[]
+(exit 0)
+

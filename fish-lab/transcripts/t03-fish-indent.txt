@@ -1,0 +1,33 @@
+$ cat messy.fish (as written, indentation all over the place)
+function greet
+if test (count $argv) -gt 0
+echo "Hello, $argv[1]!"
+else
+echo "Hello, world!"
+end
+end
+for word in one two
+echo $word
+end
+
+$ fish_indent messy.fish
+function greet
+    if test (count $argv) -gt 0
+        echo "Hello, $argv[1]!"
+    else
+        echo "Hello, world!"
+    end
+end
+for word in one two
+    echo $word
+end
+
+$ fish_indent --check messy.fish; echo exit=$status
+/home/hatch/workspace/fish-for-mere-mortals/fish-lab/scripts/messy.fish
+exit=1
+
+$ fish_indent messy.fish > tidy.fish, then --check passes
+exit=0
+
+$ fish --no-execute tidy.fish (parse check, nothing runs)
+exit=0

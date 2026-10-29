@@ -1,0 +1,23 @@
+$ what an installed fish keeps, after the lab used it for a day:
+
+$ ls ~/.config/fish
+completions
+conf.d
+config.fish
+fish_variables
+functions
+
+$ ls ~/.local/share/fish
+fish_history
+generated_completions
+
+$ the default greeting can be silenced with an empty fish_greeting
+(unset here; the pty session in t09 shows the greeting it prints)
+
+$ history is a plain file with the commands and their times
+-rw------- 1 root root 225 Oct 29 17:44 /home/hatch/workspace/fish-lab-work/home/.local/share/fish/fish_history
+
+$ its first entries (the pty sessions of t09 wrote them):
+- cmd: echo the eagle has landed
+  when: 1793295763
+- cmd: exit
